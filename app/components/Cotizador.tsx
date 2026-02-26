@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { sendContactEmail } from "../lib/email"; // ✅ EmailJS helper actualizado
 
 // --- Componentes Reutilizables de UI ---
 
@@ -13,7 +14,6 @@ interface InputFieldProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
-  placeholder?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -23,18 +23,24 @@ const InputField: React.FC<InputFieldProps> = ({
   value,
   onChange,
   required,
-  placeholder,
 }) => (
-  <div className="mb-4">
+  <div className="relative mb-4">
     <input
       type={type}
       name={name}
+      id={name}
       value={value}
       onChange={onChange}
-      placeholder={placeholder || `${label}${required ? "*" : ""}`}
-      className="w-full p-3 bg-surface border border-gray-200 rounded-md text-text-main placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm"
+      placeholder={label} // Requerido para activar peer-placeholder-shown
+      className="peer w-full px-3 pt-5 pb-2 bg-surface border border-gray-200 rounded-md text-text-main placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm"
       required={required}
     />
+    <label
+      htmlFor={name}
+      className="absolute left-3 top-1.5 text-xs text-gray-500 transition-all pointer-events-none peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-primary"
+    >
+      {label} {required ? "*" : ""}
+    </label>
   </div>
 );
 
@@ -55,12 +61,13 @@ const SelectField: React.FC<SelectFieldProps> = ({
   required,
   options,
 }) => (
-  <div className="mb-4">
+  <div className="relative mb-4">
     <select
       name={name}
+      id={name}
       value={value}
       onChange={onChange}
-      className="w-full p-3 bg-surface border border-gray-200 rounded-md text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none transition-all cursor-pointer shadow-sm"
+      className="peer w-full px-3 pt-5 pb-2 bg-surface border border-gray-200 rounded-md text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none transition-all cursor-pointer shadow-sm"
       required={required}
       style={{
         backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
@@ -69,16 +76,23 @@ const SelectField: React.FC<SelectFieldProps> = ({
         backgroundSize: `1.5em 1.5em`,
       }}
     >
-      <option value="" disabled hidden>
-        {label}
-        {required ? "*" : ""}
-      </option>
+      <option value="" disabled hidden></option>
       {options.map((opt, index) => (
         <option key={index} value={opt.value}>
           {opt.label}
         </option>
       ))}
     </select>
+    <label
+      htmlFor={name}
+      className={`absolute left-3 transition-all pointer-events-none ${
+        value
+          ? "top-1.5 text-xs text-gray-500"
+          : "top-3.5 text-base text-gray-400"
+      } peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-primary`}
+    >
+      {label} {required ? "*" : ""}
+    </label>
   </div>
 );
 
@@ -140,10 +154,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
 
   return (
     <div className="relative bg-[url('/bg-cotizador.png')] bg-cover bg-center bg-no-repeat mb-8 px-2">
-      {/* Línea de fondo */}
       <div className="absolute top-4 left-8 right-8 h-[2px] bg-gray-200 -z-10"></div>
-
-      {/* Progreso activo */}
       <div
         className="absolute top-4 left-8 h-[2px] bg-primary -z-10 transition-all duration-500 ease-in-out"
         style={{
@@ -163,7 +174,11 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
             >
               <div
                 className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 flex items-center justify-center font-bold mb-2 transition-all duration-300
-                  ${isActive ? "border-primary bg-surface text-primary" : "border-gray-300 bg-surface text-gray-400"}
+                  ${
+                    isActive
+                      ? "border-primary bg-surface text-primary"
+                      : "border-gray-300 bg-surface text-gray-400"
+                  }
                   ${isCurrent ? "ring-2 ring-primary/20 scale-110" : ""}
                 `}
               >
@@ -188,11 +203,12 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
 const Cotizador = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   interface FormData {
     nombreCompleto: string;
     rut: string;
-    edad: number;
+    edad: number | string;
     correo: string;
     celular: string;
     previsionActual: string;
@@ -201,20 +217,24 @@ const Cotizador = () => {
     cargas: string;
     edadCargas: string;
     rentaImponible: string;
+    comentarios: string;
+    tipo_contacto: string;
   }
 
   const initialFormData: FormData = {
     nombreCompleto: "",
     rut: "",
-    edad: 0,
+    edad: "",
     correo: "",
     celular: "",
     previsionActual: "",
     ufActual: "",
     regionResidencia: "",
     cargas: "",
-    edadCargas: "",
+    edadCargas: "", // Si luego agregas este input, ya está en el estado
     rentaImponible: "",
+    comentarios: "",
+    tipo_contacto: "",
   };
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
@@ -235,10 +255,24 @@ const Cotizador = () => {
     setCurrentStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ✅ Enviar correo usando el ESTADO directamente
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulario enviado:", formData);
-    setIsSubmitted(true);
+
+    try {
+      setIsSending(true);
+      console.log("Enviando datos a EmailJS: ", formData);
+
+      // Le pasamos el objeto JSON completo
+      await sendContactEmail(formData);
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Error enviando correo:", error);
+      alert("No se pudo enviar el formulario. Intenta nuevamente.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const resetForm = () => {
@@ -249,9 +283,15 @@ const Cotizador = () => {
 
   // Configuración de animación
   const variants = {
-    enter: (direction: number) => ({ x: direction > 0 ? 30 : -30, opacity: 0 }),
+    enter: (direction: number) => ({
+      x: direction > 0 ? 30 : -30,
+      opacity: 0,
+    }),
     center: { x: 0, opacity: 1 },
-    exit: (direction: number) => ({ x: direction < 0 ? 30 : -30, opacity: 0 }),
+    exit: (direction: number) => ({
+      x: direction < 0 ? 30 : -30,
+      opacity: 0,
+    }),
   };
 
   const [direction, setDirection] = useState<number>(0);
@@ -265,7 +305,6 @@ const Cotizador = () => {
   };
 
   return (
-    // CONTENEDOR PRINCIPAL: Grid de 2 columnas (Texto Izq | Formulario Der)
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* --- COLUMNA IZQUIERDA: Textos --- */}
@@ -279,9 +318,8 @@ const Cotizador = () => {
           </p>
         </div>
 
-        {/* --- COLUMNA DERECHA: El Formulario (Card Blanca) --- */}
+        {/* --- COLUMNA DERECHA: El Formulario --- */}
         <div className="w-full">
-          {/* Aquí comienza la "Card" del formulario */}
           <div className="bg-surface/90 backdrop-blur-sm border border-white/60 rounded-[1.5rem] shadow-2xl p-6 sm:p-10 relative">
             {!isSubmitted ? (
               <>
@@ -325,7 +363,7 @@ const Cotizador = () => {
                             <InputField
                               label="Edad"
                               name="edad"
-                              value={formData.edad}
+                              value={formData.edad.toString()}
                               onChange={handleChange}
                               required
                               type="number"
@@ -396,17 +434,14 @@ const Cotizador = () => {
                                   label: "Isapre Colmena",
                                 },
                                 {
-                                  value: "isapre_isapre_esencial",
+                                  value: "isapre_esencial",
                                   label: "Isapre Esencial",
                                 },
                                 {
                                   value: "isapre_nueva_masvida",
                                   label: "Isapre Nueva Masvida",
                                 },
-                                {
-                                  value: "otra",
-                                  label: "Otra",
-                                },
+                                { value: "otra", label: "Otra" },
                                 {
                                   value: "sin-prevision",
                                   label: "Sin previsión",
@@ -414,12 +449,11 @@ const Cotizador = () => {
                               ]}
                             />
                             <InputField
-                              label="Indique cuantas UF paga actualmente"
+                              label="¿Cuántas UF pagas actualmente?"
                               name="ufActual"
                               type="number"
                               value={formData.ufActual}
                               onChange={handleChange}
-                              placeholder="Cuantas UF paga actualmente"
                             />
                             <SelectField
                               label="Región de Residencia"
@@ -477,9 +511,9 @@ const Cotizador = () => {
                               value={formData.rentaImponible}
                               onChange={handleChange}
                               required
-                              placeholder="Ej: 3000000"
                             />
                           </div>
+
                           <div className="mt-8 flex gap-3">
                             <SecondaryButton
                               onClick={handlePrev}
@@ -506,29 +540,56 @@ const Cotizador = () => {
                           transition={{ type: "tween", duration: 0.3 }}
                         >
                           <div className="text-center space-y-4 py-6">
-                            <h3 className="text-xl font-bold text-text-main">
-                              ¡Confirmar Datos!
-                            </h3>
-                            <div className="bg-gray-50 p-5 rounded-lg text-sm text-left border border-gray-100 shadow-inner space-y-2">
-                              <p>
-                                <span className="text-text-muted">Nombre:</span>{" "}
-                                <strong>{formData.nombreCompleto}</strong>
-                              </p>
-                              <p>
-                                <span className="text-text-muted">RUT:</span>{" "}
-                                <strong>{formData.rut}</strong>
-                              </p>
-                              <p>
-                                <span className="text-text-muted">
-                                  Previsión:
-                                </span>{" "}
-                                <strong>{formData.previsionActual}</strong>
-                              </p>
-                              <p>
-                                <span className="text-text-muted">Renta:</span>{" "}
-                                <strong>${formData.rentaImponible}</strong>
-                              </p>
-                            </div>
+                            <SelectField
+                              label="Tipo de contacto"
+                              name="tipo_contacto"
+                              value={formData.tipo_contacto}
+                              onChange={handleChange}
+                              required
+                              options={[
+                                { value: "telefono", label: "Teléfono" },
+                                {
+                                  value: "correo",
+                                  label: "Correo Electrónico",
+                                },
+                                {
+                                  value: "video_llamada",
+                                  label:
+                                    "Video Llamada (te enviaremos un mail para confirmar)",
+                                },
+                              ]}
+                            />
+                            <SelectField
+                              label="Comentarios"
+                              name="comentarios"
+                              value={formData.comentarios}
+                              onChange={handleChange}
+                              required
+                              options={[
+                                {
+                                  value: "aumento_excesivo",
+                                  label:
+                                    "Aumento excesivo en el valor del plan",
+                                },
+                                {
+                                  value: "mejores_coberturas",
+                                  label: "Mejores coberturas en otra isapre",
+                                },
+                                {
+                                  value: "mala_experiencia",
+                                  label:
+                                    "Mala experiencia con el servicio al cliente",
+                                },
+                                {
+                                  value: "recomendacion",
+                                  label: "Recomendación médica o familiar",
+                                },
+                                {
+                                  value: "sumar_cargas",
+                                  label: "Necesidad de sumar cargas familiares",
+                                },
+                              ]}
+                            />
                           </div>
                           <div className="mt-8 flex gap-3">
                             <SecondaryButton
@@ -538,7 +599,7 @@ const Cotizador = () => {
                               Volver
                             </SecondaryButton>
                             <PrimaryButton type="submit" className="flex-1">
-                              Cotizar
+                              {isSending ? "Enviando..." : "Cotizar"}
                             </PrimaryButton>
                           </div>
                         </motion.div>

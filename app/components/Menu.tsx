@@ -33,9 +33,9 @@ export default function Menu() {
               <Image
                 src="/logo.png"
                 alt="Logo Desde Tu 7"
-                width={100}
-                height={200}
-                className="h-10 w-auto object-contain"
+                width={120}
+                height={120}
+                className="object-contain"
               />
             </Link>
           </div>
