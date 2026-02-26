@@ -28,7 +28,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE CONSALUD",
     subtitle: "GINECÓLOGO Y OBSTETRA",
     description:
-      "Como médico en jefe de Centro Médico del Bosque, el Dr. de la Peña se especializa en cirugía ginecológica y atención obstétrica.",
+      "Desde 1983, cuenta con más de 40 años de trayectoria y una de las mayores participaciones del sistema ISAPRE en Chile.",
     logoPlaceholderStr: "/images/isapre-consalud.png",
     logoColorClass: "bg-teal-",
   },
@@ -37,7 +37,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE COLMENA",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "La Dra. Ramos cuenta con más de 15 años de experiencia en las áreas de fertilidad y obstetricia.",
+      "Creada en los inicios del sistema ISAPRE en 1981, mantiene trayectoria histórica y presencia consolidada en el mercado privado.",
     logoPlaceholderStr: "/images/isapre-colmena.png",
     logoColorClass: "bg-white",
   },
@@ -47,7 +47,7 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGA",
     // Nota: Los textos de descripción en la imagen se repiten para la segunda fila
     description:
-      "Con más de una década de experiencia, la Dra. Herrera es la residente experta en ginecología general y salud de la mujer.",
+      "Fundada en los años 80, forma parte de un grupo internacional de salud con fuerte presencia en el sistema privado chileno.",
     logoPlaceholderStr: "/images/isapre-banmedica.png",
     logoColorClass: "bg-red-600",
   },
@@ -56,7 +56,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE NUEVA MASVIDA",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "Como médico en jefe de Centro Médico del Bosque, el Dr. de la Peña se especializa en cirugía ginecológica y atención obstétrica.",
+      "Reorganizada en 2017, continúa operando en el sistema ISAPRE con planes orientados a distintos perfiles de afiliados.",
     logoPlaceholderStr: "/images/isapre-nueva-masvida.png",
     logoColorClass: "bg-cyan-600",
   },
@@ -65,9 +65,18 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE VIDA TRES",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "La Dra. Ramos cuenta con más de 15 años de experiencia en las áreas de fertilidad y obstetricia.",
+      "Activa desde los primeros años del sistema privado, actualmente integra el mismo grupo controlador de Banmédica en Chile.",
     logoPlaceholderStr: "/images/isapre-vida-tres.png",
     logoColorClass: "bg-green-600",
+  },
+  {
+    id: 7,
+    title: "ISAPRE ESENCIAL",
+    subtitle: "GINECÓLOGA Y OBSTETRA",
+    description:
+      "Incorporada recientemente al sistema ISAPRE, destaca por su enfoque digital, estructura ágil y propuesta orientada a eficiencia operativa.",
+    logoPlaceholderStr: "/images/isapre-esencial.png",
+    logoColorClass: "bg-cyan-600",
   },
 ];
 

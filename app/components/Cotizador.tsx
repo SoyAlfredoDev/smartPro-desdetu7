@@ -192,6 +192,7 @@ const Cotizador = () => {
   interface FormData {
     nombreCompleto: string;
     rut: string;
+    edad: number;
     correo: string;
     celular: string;
     previsionActual: string;
@@ -205,6 +206,7 @@ const Cotizador = () => {
   const initialFormData: FormData = {
     nombreCompleto: "",
     rut: "",
+    edad: 0,
     correo: "",
     celular: "",
     previsionActual: "",
@@ -321,6 +323,14 @@ const Cotizador = () => {
                               required
                             />
                             <InputField
+                              label="Edad"
+                              name="edad"
+                              value={formData.edad}
+                              onChange={handleChange}
+                              required
+                              type="number"
+                            />
+                            <InputField
                               label="Correo"
                               name="correo"
                               type="email"
@@ -377,6 +387,30 @@ const Cotizador = () => {
                                   value: "isapre_cruz_blanca",
                                   label: "Isapre Cruz Blanca",
                                 },
+                                {
+                                  value: "isapre_banmedica",
+                                  label: "Isapre Banmédica",
+                                },
+                                {
+                                  value: "isapre_colmena",
+                                  label: "Isapre Colmena",
+                                },
+                                {
+                                  value: "isapre_isapre_esencial",
+                                  label: "Isapre Esencial",
+                                },
+                                {
+                                  value: "isapre_nueva_masvida",
+                                  label: "Isapre Nueva Masvida",
+                                },
+                                {
+                                  value: "otra",
+                                  label: "Otra",
+                                },
+                                {
+                                  value: "sin-prevision",
+                                  label: "Sin previsión",
+                                },
                               ]}
                             />
                             <InputField
@@ -385,7 +419,7 @@ const Cotizador = () => {
                               type="number"
                               value={formData.ufActual}
                               onChange={handleChange}
-                              placeholder="Ej: 8"
+                              placeholder="Cuantas UF paga actualmente"
                             />
                             <SelectField
                               label="Región de Residencia"
@@ -394,9 +428,31 @@ const Cotizador = () => {
                               onChange={handleChange}
                               required
                               options={[
-                                { value: "rm", label: "Región Metropolitana" },
+                                {
+                                  value: "metropolitana",
+                                  label: "Región Metropolitana de Santiago",
+                                },
+                                {
+                                  value: "magallanes",
+                                  label: "Magallanes y la Antártica Chilena",
+                                },
+                                {
+                                  value: "arica-parinacota",
+                                  label: "Arica y Parinacota",
+                                },
+                                { value: "tarapaca", label: "Tarapacá" },
+                                { value: "antofagasta", label: "Antofagasta" },
+                                { value: "atacama", label: "Atacama" },
+                                { value: "coquimbo", label: "Coquimbo" },
                                 { value: "valparaiso", label: "Valparaíso" },
+                                { value: "ohiggins", label: "O'Higgins" },
+                                { value: "maule", label: "Maule" },
+                                { value: "nuble", label: "Ñuble" },
                                 { value: "biobio", label: "Biobío" },
+                                { value: "araucania", label: "La Araucanía" },
+                                { value: "los-rios", label: "Los Ríos" },
+                                { value: "los-lagos", label: "Los Lagos" },
+                                { value: "aysen", label: "Aysén" },
                               ]}
                             />
                             <SelectField

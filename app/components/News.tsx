@@ -1,53 +1,115 @@
+"use client";
+
 import Image from "next/image";
+import { ArrowRight, Calendar, ExternalLink } from "lucide-react";
 
 const newsItems = [
   {
     id: 1,
-    title: "Launch of New Feature",
-    date: "2024-10-01",
+    title: "Por alza GES: Revisa cuánto aumentará el valor de los planes",
+    date: "07 Ene 2026",
+    category: "Actualidad",
     excerpt:
-      "We are excited to announce the release of our new feature that will improve user experience.",
-    image: "/placeholder.png",
+      "Conoce el detalle del reajuste en el valor de los planes de salud por concepto de las Garantías Explícitas en Salud (GES) para cada Isapre.",
+    image:
+      "https://images.unsplash.com/photo-1504439468489-c8920d786a2b?q=80&w=800&auto=format&fit=crop", // Placeholder profesional médico/financiero
+    url: "https://www.biobiochile.cl/noticias/servicios/toma-nota/2026/01/07/por-alza-ges-revisa-aqui-cuanto-aumentara-el-valor-de-los-planes-de-cada-isapre.shtml",
   },
   {
     id: 2,
-    title: "Company Milestone",
-    date: "2024-09-15",
-    excerpt: "Celebrating 10 years of innovation and growth.",
-    image: "/placeholder.png",
+    title: "Conoce las tres nuevas patologías incorporadas al GES",
+    date: "Reciente",
+    category: "Salud Pública",
+    excerpt:
+      "El Ministerio de Salud ha anunciado la inclusión de nuevas enfermedades al sistema de Garantías Explícitas en Salud, ampliando la cobertura y protección.",
+    image:
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop", // Placeholder profesional médico
+    url: "https://www.gob.cl/noticias/conoce-las-tres-nuevas-patologias-ges/",
+  },
+  {
+    id: 3,
+    title: "Informativo Oficial Superintendencia de Salud (PDF)",
+    date: "Documento Oficial",
+    category: "Regulación",
+    excerpt:
+      "Revisa la circular y documentación oficial emitida por la Superintendencia de Salud respecto a las normativas vigentes del sistema privado.",
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop", // Placeholder documentos/legal
+    url: "https://www.superdesalud.gob.cl/difusion/665/articles-17525_recurso_1.pdf",
   },
 ];
 
 export default function News() {
   return (
-    <section className="max-w-4xl mx-auto py-8 px-4">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-        Latest News
-      </h2>
-      <div className="grid gap-6 md:grid-cols-2">
-        {newsItems.map((item) => (
-          <article
-            key={item.id}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition p-4"
-          >
-            <Image
-              src={item.image}
-              alt={item.title}
-              width={400}
-              height={200}
-              className="rounded"
-            />
-            <h3 className="mt-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
-              {item.title}
-            </h3>
-            <time className="text-sm text-gray-500 dark:text-gray-400">
-              {item.date}
-            </time>
-            <p className="mt-2 text-gray-700 dark:text-gray-300">
-              {item.excerpt}
-            </p>
-          </article>
-        ))}
+    <section className="bg-background py-20 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-7xl mx-auto">
+        {/* Encabezado de la sección */}
+        <div className="text-center mb-16">
+          <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">
+            Infórmate
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-main">
+            Noticias y Actualizaciones
+          </h2>
+          <p className="mt-4 text-text-muted max-w-2xl mx-auto">
+            Mantente al día con los últimos cambios regulatorios, coberturas GES
+            y noticias relevantes del sistema de Isapres en Chile.
+          </p>
+        </div>
+
+        {/* Grilla de Noticias */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {newsItems.map((item) => (
+            <article
+              key={item.id}
+              className="bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col group hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+            >
+              {/* Contenedor de Imagen */}
+              <div className="relative h-56 w-full overflow-hidden">
+                <div className="absolute top-4 left-4 z-10 bg-surface/90 backdrop-blur-sm text-text-main text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  {item.category}
+                </div>
+                {/* Nota: En un proyecto real, cambia estas URLs por tus imágenes en la carpeta public ej: "/news-1.jpg" */}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+
+              {/* Contenido de la Tarjeta */}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center text-sm text-text-muted mb-3">
+                  <Calendar className="w-4 h-4 mr-2 text-primary" />
+                  <time>{item.date}</time>
+                </div>
+
+                <h3 className="text-xl font-bold text-text-main mb-3 leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-text-muted text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
+                  {item.excerpt}
+                </p>
+
+                {/* Botón de Enlace */}
+                <div className="mt-auto pt-4 border-t border-gray-100">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary font-bold text-sm hover:text-text-main transition-colors group/btn"
+                  >
+                    Leer artículo completo
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
