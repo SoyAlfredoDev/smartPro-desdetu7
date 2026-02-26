@@ -147,7 +147,7 @@ const Footer = () => {
                   href="mailto:Contacto@desdetu7.cl"
                   className="hover:text-primary transition-colors duration-200"
                 >
-                  Contacto@desdetu7.cl
+                  contacto@desdetu7.cl
                 </a>
               </li>
             </ul>

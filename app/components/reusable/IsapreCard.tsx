@@ -7,8 +7,7 @@ interface IsapreCardProps {
 }
 
 const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
-  const { title, subtitle, description, logoPlaceholderStr, logoColorClass } =
-    data;
+  const { title, subtitle, description, logoPlaceholderStr } = data;
 
   return (
     // Contenedor principal de la tarjeta
@@ -21,10 +20,10 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
           basado en el color de la marca en la imagen.
         */}
         <div
-          className={`w-full h-full rounded-full flex items-center justify-center text-white font-bold text-2xl ${logoColorClass}`}
+          className={`w-full h-full rounded-full flex items-center justify-center text-white font-bold text-2xl bg-white`}
         >
           {/* Placeholder del logo (ej: 'CB' para Cruz Blanca) */}
-          {logoPlaceholderStr}
+          <img src={logoPlaceholderStr} alt={title} />
         </div>
       </div>
 

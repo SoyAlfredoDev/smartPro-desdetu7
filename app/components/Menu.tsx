@@ -16,10 +16,10 @@ export default function Menu() {
   // Centralizamos los enlaces para facilitar su renderizado
   const navLinks = [
     { href: "/", label: "INICIO" },
-    { href: "/contactos", label: "CONTACTOS" },
-    { href: "/servicios", label: "SERVICIOS" },
-    { href: "/isapres", label: "ISAPRES" },
-    { href: "/noticias", label: "NOTICIAS" },
+    { href: "#contactos", label: "CONTACTOS" },
+    { href: "#servicios", label: "SERVICIOS" },
+    { href: "#isapres", label: "ISAPRES" },
+    { href: "#noticias", label: "NOTICIAS" },
   ];
 
   return (
@@ -34,7 +34,7 @@ export default function Menu() {
                 src="/logo.png"
                 alt="Logo Desde Tu 7"
                 width={100}
-                height={50}
+                height={200}
                 className="h-10 w-auto object-contain"
               />
             </Link>

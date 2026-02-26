@@ -6,6 +6,7 @@ import News from "./components/News";
 import Footer from "./components/Footer";
 import Cotizador from "./components/Cotizador";
 import Isapres from "./components/Isapres";
+import CotizacionOnline from "./components/CotizacionOnline";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,6 +34,8 @@ export default function RootLayout({
         <Cotizador />
         <Isapres />
         <News />
+        <CotizacionOnline />
+
         <Footer />
       </body>
     </html>

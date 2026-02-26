@@ -20,7 +20,7 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGA",
     description:
       "Con más de una década de experiencia, la Dra. Herrera es la residente experta en ginecología general y salud de la mujer.",
-    logoPlaceholderStr: "CB",
+    logoPlaceholderStr: "/images/isapre-cruz-blanca.jpeg",
     logoColorClass: "bg-blue-600",
   },
   {
@@ -29,8 +29,8 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGO Y OBSTETRA",
     description:
       "Como médico en jefe de Centro Médico del Bosque, el Dr. de la Peña se especializa en cirugía ginecológica y atención obstétrica.",
-    logoPlaceholderStr: "C-",
-    logoColorClass: "bg-teal-500",
+    logoPlaceholderStr: "/images/isapre-consalud.png",
+    logoColorClass: "bg-teal-",
   },
   {
     id: 3,
@@ -38,8 +38,8 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
       "La Dra. Ramos cuenta con más de 15 años de experiencia en las áreas de fertilidad y obstetricia.",
-    logoPlaceholderStr: "CO",
-    logoColorClass: "bg-blue-800",
+    logoPlaceholderStr: "/images/isapre-colmena.png",
+    logoColorClass: "bg-white",
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const isapresDataList: IsapreData[] = [
     // Nota: Los textos de descripción en la imagen se repiten para la segunda fila
     description:
       "Con más de una década de experiencia, la Dra. Herrera es la residente experta en ginecología general y salud de la mujer.",
-    logoPlaceholderStr: "B",
+    logoPlaceholderStr: "/images/isapre-banmedica.png",
     logoColorClass: "bg-red-600",
   },
   {
@@ -57,7 +57,7 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
       "Como médico en jefe de Centro Médico del Bosque, el Dr. de la Peña se especializa en cirugía ginecológica y atención obstétrica.",
-    logoPlaceholderStr: "NM",
+    logoPlaceholderStr: "/images/isapre-nueva-masvida.png",
     logoColorClass: "bg-cyan-600",
   },
   {
@@ -66,7 +66,7 @@ const isapresDataList: IsapreData[] = [
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
       "La Dra. Ramos cuenta con más de 15 años de experiencia en las áreas de fertilidad y obstetricia.",
-    logoPlaceholderStr: "VT",
+    logoPlaceholderStr: "/images/isapre-vida-tres.png",
     logoColorClass: "bg-green-600",
   },
 ];
