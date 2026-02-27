@@ -281,15 +281,15 @@ const Cotizador = () => {
     setIsSubmitted(false);
   };
 
-  // Configuración de animación
+  // Configuración de animación (suavizada)
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 30 : -30,
+      x: direction > 0 ? 20 : -20,
       opacity: 0,
     }),
     center: { x: 0, opacity: 1 },
     exit: (direction: number) => ({
-      x: direction < 0 ? 30 : -30,
+      x: direction < 0 ? 20 : -20,
       opacity: 0,
     }),
   };
@@ -305,10 +305,19 @@ const Cotizador = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
+    <div
+      id="cotizador"
+      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* --- COLUMNA IZQUIERDA: Textos --- */}
-        <div className="text-center lg:text-left space-y-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center lg:text-left space-y-2"
+        >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-main leading-tight tracking-tight">
             COTIZA EL MEJOR <br />
             <span className="text-text-main">PLAN DE ISAPRE</span>
@@ -316,10 +325,16 @@ const Cotizador = () => {
           <p className="text-xl sm:text-2xl lg:text-4xl text-text-muted font-medium italic mt-4 pl-1">
             Desde tu 7%
           </p>
-        </div>
+        </motion.div>
 
         {/* --- COLUMNA DERECHA: El Formulario --- */}
-        <div className="w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          className="w-full"
+        >
           <div className="bg-surface/70 backdrop-blur-sm border border-white/60 rounded-[1.5rem] shadow-2xl p-6 sm:p-10 relative">
             {!isSubmitted ? (
               <>
@@ -343,7 +358,11 @@ const Cotizador = () => {
                           initial="enter"
                           animate="center"
                           exit="exit"
-                          transition={{ type: "tween", duration: 0.3 }}
+                          transition={{
+                            type: "tween",
+                            duration: 0.5,
+                            ease: "easeOut",
+                          }}
                         >
                           <div className="space-y-3">
                             <InputField
@@ -402,7 +421,11 @@ const Cotizador = () => {
                           initial="enter"
                           animate="center"
                           exit="exit"
-                          transition={{ type: "tween", duration: 0.3 }}
+                          transition={{
+                            type: "tween",
+                            duration: 0.5,
+                            ease: "easeOut",
+                          }}
                         >
                           <div className="space-y-3">
                             <SelectField
@@ -537,7 +560,11 @@ const Cotizador = () => {
                           initial="enter"
                           animate="center"
                           exit="exit"
-                          transition={{ type: "tween", duration: 0.3 }}
+                          transition={{
+                            type: "tween",
+                            duration: 0.5,
+                            ease: "easeOut",
+                          }}
                         >
                           <div className="text-center space-y-4 py-6">
                             <SelectField
@@ -611,8 +638,9 @@ const Cotizador = () => {
             ) : (
               // VISTA DE ÉXITO
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="text-center py-10"
               >
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -631,7 +659,7 @@ const Cotizador = () => {
               </motion.div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

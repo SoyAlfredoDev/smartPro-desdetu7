@@ -22,17 +22,38 @@ export default function Menu() {
     { href: "#noticias", label: "NOTICIAS" },
   ];
 
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string,
+  ) => {
+    // Si el link empieza con #, prevenimos la navegación por defecto y hacemos scroll suave
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.replace("#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsOpen(false); // Cerramos el menú en caso de estar en vista móvil
+    }
+    // Si es "/" o no empieza con #, el componente Link de Next.js se encarga del enrutamiento normal al inicio
+  };
+
   return (
     <nav className="text-text-main shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center z-50">
-            <Link href="/">
+            <Link
+              href="/"
+              aria-label="Volver al inicio"
+              title="Inicio | Desde Tu 7"
+            >
               {/* Ajusté ligeramente el tamaño para que no deforme el navbar */}
               <Image
                 src="/logo.png"
-                alt="Logo Desde Tu 7"
+                alt="Logotipo de Desde Tu 7 - Asesoría de Isapres" // TODO SEO: Describir explícitamente el logo para accesibilidad
                 width={120}
                 height={120}
                 className="object-contain"
@@ -46,7 +67,10 @@ export default function Menu() {
               <li key={link.label}>
                 <Link
                   href={link.href}
+                  onClick={(e) => handleScroll(e, link.href)}
                   className="text-primary font-bold text-sm tracking-wide hover:text-text-main transition-colors duration-200"
+                  aria-label={`Ir a la sección de ${link.label.toLowerCase()}`}
+                  title={`Navegar a ${link.label}`}
                 >
                   {link.label}
                 </Link>
@@ -86,8 +110,16 @@ export default function Menu() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    onClick={() => setIsOpen(false)} // Cierra el menú al hacer clic
+                    onClick={(e) => {
+                      if (link.href.startsWith("#")) {
+                        handleScroll(e, link.href);
+                      } else {
+                        setIsOpen(false);
+                      }
+                    }}
                     className="block px-3 py-3 text-primary font-bold tracking-wide hover:bg-background hover:text-text-main rounded-md transition-colors"
+                    aria-label={`Ir a la sección de ${link.label.toLowerCase()}`}
+                    title={`Navegar a ${link.label}`}
                   >
                     {link.label}
                   </Link>

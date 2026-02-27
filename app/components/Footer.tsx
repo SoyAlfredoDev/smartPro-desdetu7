@@ -181,9 +181,39 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Barra inferior: Copyright y Legales */}
-        <div className="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-text-muted">
-          <p>&copy; {currentYear} Desde Tu 7. Todos los derechos reservados.</p>
+        {/* Barra inferior: Copyright, Creador y Legales */}
+        <div className="mt-16 pt-8 border-t border-gray-200 flex flex-col lg:flex-row justify-between items-center gap-6 text-xs font-medium text-text-muted">
+          <p className="text-center lg:text-left">
+            &copy; {currentYear} Desde Tu 7. Todos los derechos reservados.
+          </p>
+
+          {/* Sección de Isapres Premium */}
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <span className="text-text-muted">
+              creado por{" "}
+              <a
+                href="https://isaprespremium.cl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-bold transition-colors"
+              >
+                IsapresPremium.cl
+              </a>
+            </span>
+            <a
+              href="https://isaprespremium.cl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/images/logo-isapres-premium.png"
+                alt="Logo Isapres Premium"
+                className="h-7 w-auto object-contain"
+              />
+            </a>
+          </div>
+
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors">
               Términos y Condiciones

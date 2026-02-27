@@ -14,7 +14,7 @@ const CotizacionOnline = () => {
   }, []);
 
   return (
-    <section className="bg-surface py-16 lg:py-24 overflow-hidden">
+    <section id="agenda" className="bg-surface py-16 lg:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Columna Izquierda: Imagen con borde corporativo */}
