@@ -51,11 +51,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Columna 1: Marca y Descripción */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="text-3xl font-bold text-text-main tracking-wide">
               DesdeTu7.cl
             </h3>
-            <p className="text-sm leading-relaxed text-text-muted pr-4">
+            <p className="text-sm leading-relaxed text-text-muted md:pr-4">
               Optimizamos tu elección de salud. Plataforma para encontrar y
               gestionar los mejores planes de previsión médica con total
               seguridad y transparencia.
@@ -65,13 +65,12 @@ const Footer = () => {
             <div className="mt-6 inline-flex items-center gap-3 bg-background border border-gray-200 px-4 py-3 rounded-lg shadow-sm">
               <div className="relative flex items-center justify-center">
                 <TrendingUp className="w-5 h-5 text-primary relative z-10" />
-                {/* Punto parpadeante para indicar que es un dato en vivo */}
                 <span className="absolute top-0 right-0 -mt-1 -mr-1 flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
                 </span>
               </div>
-              <div>
+              <div className="text-left">
                 <p className="text-[11px] text-text-muted font-bold uppercase tracking-wider">
                   Valor UF Hoy
                 </p>
@@ -83,7 +82,7 @@ const Footer = () => {
           </div>
 
           {/* Columna 2: Enlaces Rápidos */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
             <h4 className="text-lg font-bold text-text-main tracking-wide">
               Enlaces Rápidos
             </h4>
@@ -124,24 +123,26 @@ const Footer = () => {
           </div>
 
           {/* Columna 3: Información de Contacto */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
             <h4 className="text-lg font-bold text-text-main tracking-wide">
               Contacto
             </h4>
-            <ul className="space-y-4 text-sm font-medium text-text-muted">
-              <li className="flex items-start gap-3 group">
+            <ul className="space-y-4 text-sm font-medium text-text-muted w-full">
+              {/* Alineación condicional para íconos y texto */}
+              <li className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-2 md:gap-3 group">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                 <span>
                   Vicuña Mackenna 920, dpto 726,
-                  <br />
+                  <br className="hidden md:block" />
+                  <span className="md:hidden"> </span>
                   Ñuñoa, 7750000
                 </span>
               </li>
-              <li className="flex items-center gap-3 group">
+              <li className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 group">
                 <Phone className="w-5 h-5 text-primary shrink-0 group-hover:scale-110 transition-transform" />
                 <span>+56 9 6413 38 48</span>
               </li>
-              <li className="flex items-center gap-3 group">
+              <li className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-3 group">
                 <Mail className="w-5 h-5 text-primary shrink-0 group-hover:scale-110 transition-transform" />
                 <a
                   href="mailto:Contacto@desdetu7.cl"
@@ -154,14 +155,14 @@ const Footer = () => {
           </div>
 
           {/* Columna 4: Redes Sociales */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
             <h4 className="text-lg font-bold text-text-main tracking-wide">
               Síguenos
             </h4>
-            <p className="text-sm text-text-muted mb-4">
+            <p className="text-sm text-text-muted mb-4 max-w-xs md:max-w-none">
               Mantente al tanto de las últimas novedades y actualizaciones.
             </p>
-            <div className="flex gap-4">
+            <div className="flex justify-center md:justify-start gap-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 return (
@@ -188,7 +189,7 @@ const Footer = () => {
           </p>
 
           {/* Sección de Isapres Premium */}
-          <div className="flex flex-col sm:flex-row items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
             <span className="text-text-muted">
               creado por{" "}
               <a
@@ -204,7 +205,7 @@ const Footer = () => {
               href="https://isaprespremium.cl"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
+              className="hover:opacity-80 transition-opacity mt-2 sm:mt-0"
             >
               <img
                 src="/images/logo-isapres-premium.png"
@@ -214,7 +215,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center">
             <a href="#" className="hover:text-primary transition-colors">
               Términos y Condiciones
             </a>
