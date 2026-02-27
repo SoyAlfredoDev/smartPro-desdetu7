@@ -30,11 +30,21 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <Menu />
-        <Cotizador />
+        <div
+          style={{
+            backgroundImage: "url('/images/bg-cotizador.jpeg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <Menu />
+          <Cotizador />
+        </div>
+
         <Isapres />
-        <News />
+
         <CotizacionOnline />
+        <News />
 
         <Footer />
       </body>

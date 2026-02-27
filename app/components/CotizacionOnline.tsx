@@ -56,7 +56,7 @@ const CotizacionOnline = () => {
             {isClient && (
               <PopupButton
                 // REEMPLAZA ESTA URL CON TU ENLACE REAL DE CALENDLY
-                url="https://calendly.com/tu-usuario/cotizacion"
+                url="https://calendly.com/contacto-desdetu7/30min"
                 // Elemento raíz para la accesibilidad del modal en Next.js
                 rootElement={document.body}
                 text="HORARIOS DISPONIBLES"

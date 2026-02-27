@@ -16,14 +16,14 @@ export default function Menu() {
   // Centralizamos los enlaces para facilitar su renderizado
   const navLinks = [
     { href: "/", label: "INICIO" },
-    { href: "#contactos", label: "CONTACTOS" },
-    { href: "#servicios", label: "SERVICIOS" },
+    { href: "#cotizador", label: "COTIZADOR" },
     { href: "#isapres", label: "ISAPRES" },
+    { href: "#agenda", label: "AGENDA ONLINE" },
     { href: "#noticias", label: "NOTICIAS" },
   ];
 
   return (
-    <nav className="bg-surface text-text-main shadow-md relative z-50">
+    <nav className="text-text-main shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}

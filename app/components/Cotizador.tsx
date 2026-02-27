@@ -313,14 +313,14 @@ const Cotizador = () => {
             COTIZA EL MEJOR <br />
             <span className="text-text-main">PLAN DE ISAPRE</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-text-muted font-medium italic mt-4 pl-1">
+          <p className="text-xl sm:text-2xl lg:text-4xl text-text-muted font-medium italic mt-4 pl-1">
             Desde tu 7%
           </p>
         </div>
 
         {/* --- COLUMNA DERECHA: El Formulario --- */}
         <div className="w-full">
-          <div className="bg-surface/90 backdrop-blur-sm border border-white/60 rounded-[1.5rem] shadow-2xl p-6 sm:p-10 relative">
+          <div className="bg-surface/70 backdrop-blur-sm border border-white/60 rounded-[1.5rem] shadow-2xl p-6 sm:p-10 relative">
             {!isSubmitted ? (
               <>
                 <div className="text-center mb-6">

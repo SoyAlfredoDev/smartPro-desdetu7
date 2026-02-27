@@ -11,8 +11,7 @@ const newsItems = [
     category: "Actualidad",
     excerpt:
       "Conoce el detalle del reajuste en el valor de los planes de salud por concepto de las Garantías Explícitas en Salud (GES) para cada Isapre.",
-    image:
-      "https://images.unsplash.com/photo-1504439468489-c8920d786a2b?q=80&w=800&auto=format&fit=crop", // Placeholder profesional médico/financiero
+    image: "/images/noticia1.webp", // Placeholder profesional médico/financiero
     url: "https://www.biobiochile.cl/noticias/servicios/toma-nota/2026/01/07/por-alza-ges-revisa-aqui-cuanto-aumentara-el-valor-de-los-planes-de-cada-isapre.shtml",
   },
   {
@@ -41,7 +40,16 @@ const newsItems = [
 
 export default function News() {
   return (
-    <section className="bg-background py-20 px-4 sm:px-6 lg:px-8 font-sans">
+    <section
+      style={{
+        backgroundImage:
+          "linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('/images/bg-footer.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="py-20 px-4 sm:px-6 lg:px-8 font-sans"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Encabezado de la sección */}
         <div className="text-center mb-16">

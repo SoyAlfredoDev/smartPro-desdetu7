@@ -12,7 +12,7 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
   return (
     // Contenedor principal de la tarjeta
     // 'mt-12' es crucial para dar espacio al logo que flota arriba
-    <div className="relative mt-12 bg-surface rounded-[2rem] shadow-xl p-8 pt-16 flex flex-col justify-between text-center h-full transition-transform hover:-translate-y-1 duration-300">
+    <div className="relative mt-12 bg-surface rounded-[2rem] shadow-xl p-8 pt-16 flex flex-col justify-between text-center h-full transition-transform hover:-translate-y-2 duration-300">
       {/* Círculo del Logo Flotante */}
       <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-surface rounded-full shadow-md flex items-center justify-center p-2 z-10">
         {/* NOTA: En un entorno real, aquí usarías el componente <Image /> de Next.js 

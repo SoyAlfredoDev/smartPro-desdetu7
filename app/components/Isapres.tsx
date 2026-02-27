@@ -7,7 +7,6 @@ export interface IsapreData {
   title: string;
   subtitle: string;
   description: string;
-  // Estos campos son helpers visuales ya que no tenemos las imágenes reales
   logoPlaceholderStr: string;
   logoColorClass: string;
 }
@@ -83,7 +82,14 @@ const isapresDataList: IsapreData[] = [
 const Isapres: React.FC = () => {
   return (
     // Sección contenedora con un fondo claro suave
-    <section className="py-20 bg-background">
+    <section
+      style={{
+        backgroundImage: "url('/images/bg-isapres.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+      className="py-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid responsivo:
           - 1 columna en móviles
