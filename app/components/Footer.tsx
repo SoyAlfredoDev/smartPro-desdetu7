@@ -193,23 +193,23 @@ const Footer = () => {
             <span className="text-text-muted">
               creado por{" "}
               <a
-                href="https://isaprespremium.cl"
+                href="https://smartpro.cl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-bold transition-colors"
+                className="text-primary hover:underline font-bold transition-colors me-4"
               >
-                IsapresPremium.cl
+                smartpro.cl
               </a>
             </span>
             <a
-              href="https://isaprespremium.cl"
+              href="https://smartpro.cl"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity mt-2 sm:mt-0"
             >
               <img
-                src="/images/logo-isapres-premium.png"
-                alt="Logo Isapres Premium"
+                src="/images/logo-smartpro.png"
+                alt="Logo SmartPro"
                 className="h-7 w-auto object-contain"
               />
             </a>
