@@ -10,6 +10,7 @@ import {
   Twitter,
   Instagram,
   TrendingUp,
+  X,
 } from "lucide-react";
 
 const Footer = () => {
@@ -41,9 +42,21 @@ const Footer = () => {
   }, []);
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/desdetu7.cl",
+      label: "Facebook",
+    },
+    {
+      icon: X,
+      href: "https://x.com/desdetu7",
+      label: "X",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/desdetu7.cl",
+      label: "Instagram",
+    },
   ];
 
   return (
@@ -172,6 +185,7 @@ const Footer = () => {
                     aria-label={social.label}
                     whileHover={{ scale: 1.1, y: -4 }}
                     whileTap={{ scale: 0.95 }}
+                    target="_blank"
                     className="w-10 h-10 rounded-full bg-background border border-gray-200 flex items-center justify-center text-text-muted hover:bg-primary hover:text-white hover:border-primary shadow-sm hover:shadow-primary/30 transition-all duration-300"
                   >
                     <Icon className="w-4 h-4" />

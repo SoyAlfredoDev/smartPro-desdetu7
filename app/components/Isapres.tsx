@@ -22,7 +22,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE CRUZ BLANCA",
     subtitle: "GINECÓLOGA",
     description:
-      "Con más de una década de experiencia, la Dra. Herrera es la residente experta en ginecología general y salud de la mujer.",
+      "Cruz Blanca, parte del grupo internacional Bupa desde 2014, es una de las principales Isapres del país con más de 700.000 afiliados y amplia trayectoria en el sistema privado de salud chileno.",
     logoPlaceholderStr: "/images/isapre-cruz-blanca.jpeg",
     logoColorClass: "bg-blue-600",
   },
@@ -31,7 +31,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE CONSALUD",
     subtitle: "GINECÓLOGO Y OBSTETRA",
     description:
-      "Desde 1983, cuenta con más de 40 años de trayectoria y una de las mayores participaciones del sistema ISAPRE en Chile.",
+      "Respaldada por Inversiones La Construcción (ILC), cuenta con más de 40 años de trayectoria en el sistema de salud chileno y el programa Camina Contigo, que acompaña integralmente a afiliados con enfermedades graves.",
     logoPlaceholderStr: "/images/isapre-consalud.png",
     logoColorClass: "bg-teal-600",
   },
@@ -40,7 +40,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE COLMENA",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "Creada en los inicios del sistema ISAPRE en 1981, mantiene trayectoria histórica y presencia consolidada en el mercado privado.",
+      "Colmena, constituida en 1983, cuenta con amplia trayectoria en el sistema privado chileno y respaldo de grupos económicos nacionales e internacionales, con red preferente de clínicas de alta complejidad.",
     logoPlaceholderStr: "/images/isapre-colmena.png",
     logoColorClass: "bg-white",
   },
@@ -49,7 +49,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE BANMEDICA",
     subtitle: "GINECÓLOGA",
     description:
-      "Fundada en los años 80, forma parte de un grupo internacional de salud con fuerte presencia en el sistema privado chileno.",
+      "Banmédica, con más de 30 años de trayectoria en Chile, forma parte de Empresas Banmédica, grupo integrado con red propia de clínicas y presencia internacional en Latinoamérica.",
     logoPlaceholderStr: "/images/isapre-banmedica.png",
     logoColorClass: "bg-red-600",
   },
@@ -58,7 +58,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE NUEVA MASVIDA",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "Reorganizada en 2017, continúa operando en el sistema ISAPRE con planes orientados a distintos perfiles de afiliados.",
+      "Nueva Masvida, creada en 2017 y perteneciente a Nexus Chile Health SpA, opera con cobertura nacional, amplia red de prestadores y compromiso de estabilidad en sus planes.",
     logoPlaceholderStr: "/images/isapre-nueva-masvida.png",
     logoColorClass: "bg-cyan-600",
   },
@@ -67,7 +67,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE VIDA TRES",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "Activa desde los primeros años del sistema privado, actualmente integra el mismo grupo controlador de Banmédica en Chile.",
+      "Vida Tres, fundada en 1986 y parte del Grupo Empresas Banmédica, nace desde clínicas de alto prestigio en Chile. Ofrece planes de alta cobertura y amplia red nacional de prestadores. Incluye servicios digitales y convenios con centros médicos de primer nivel.",
     logoPlaceholderStr: "/images/isapre-vida-tres.png",
     logoColorClass: "bg-green-600",
   },
@@ -76,7 +76,7 @@ const isapresDataList: IsapreData[] = [
     title: "ISAPRE ESENCIAL",
     subtitle: "GINECÓLOGA Y OBSTETRA",
     description:
-      "Incorporada recientemente al sistema ISAPRE, destaca por su enfoque digital, estructura ágil y propuesta orientada a eficiencia operativa.",
+      "Isapre Esencial, parte del Grupo Alemana (Corporación Chilena Alemana de Beneficencia), opera desde 2022 con enfoque digital, cobertura nacional y red de prestadores de primer nivel.",
     logoPlaceholderStr: "/images/isapre-esencial.png",
     logoColorClass: "bg-cyan-600",
   },
