@@ -219,6 +219,9 @@ const Cotizador = () => {
     rentaImponible: string;
     comentarios: string;
     tipo_contacto: string;
+    TO_EMAIL: string;
+    FROM_NAME: string;
+    FROM_EMAIL: string;
   }
 
   const initialFormData: FormData = {
@@ -235,6 +238,9 @@ const Cotizador = () => {
     rentaImponible: "",
     comentarios: "",
     tipo_contacto: "",
+    TO_EMAIL: "contacto@desdetu7.cl",
+    FROM_NAME: "Landing Page Desde Tu 7%",
+    FROM_EMAIL: "contacto@desdetu7.cl",
   };
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
