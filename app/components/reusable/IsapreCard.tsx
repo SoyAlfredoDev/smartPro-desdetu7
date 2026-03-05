@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 // Importamos la interfaz de datos para el tipado de las props
 import { IsapreData } from "../Isapres";
+import Link from "next/link";
 
 interface IsapreCardProps {
   data: IsapreData;
@@ -36,7 +37,7 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
           {title}
         </h3>
         <h4 className="text-xs font-bold text-primary opacity-80 uppercase mb-5 tracking-wider">
-          {subtitle}
+          <span className="text-text-muted">valor:</span> {subtitle}
         </h4>
         <p className="text-text-muted text-sm leading-relaxed px-2">
           {description}
@@ -44,9 +45,13 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
       </div>
 
       {/* Icono Más (+) inferior */}
-      <div className="mt-8 text-teal-400 text-4xl leading-none font-light select-none">
-        +
-      </div>
+      <Link
+        href="#cotizador"
+        className="mt-8 text-teal-400 text-4xl leading-none font-light select-none"
+      >
+        {" "}
+        +{" "}
+      </Link>
     </div>
   );
 };
