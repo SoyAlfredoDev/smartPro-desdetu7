@@ -37,7 +37,8 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
           {title}
         </h3>
         <h4 className="text-xs font-bold text-primary opacity-80 uppercase mb-5 tracking-wider">
-          <span className="text-text-muted">valor:</span> {subtitle}
+          <span className="text-text-muted">GES ACTUAL: </span>
+          {subtitle}
         </h4>
         <p className="text-text-muted text-sm leading-relaxed px-2">
           {description}

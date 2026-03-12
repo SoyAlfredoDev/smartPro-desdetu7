@@ -20,7 +20,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 1,
     title: "ISAPRE CRUZ BLANCA",
-    subtitle: "0.971UF",
+    subtitle: "0.971 UF",
     description:
       "Cruz Blanca, parte del grupo internacional Bupa desde 2014, es una de las principales Isapres del país con más de 700.000 afiliados y amplia trayectoria en el sistema privado de salud chileno.",
     logoPlaceholderStr: "/images/isapre-cruz-blanca.jpeg",
@@ -29,7 +29,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 2,
     title: "ISAPRE CONSALUD",
-    subtitle: "0.730UF",
+    subtitle: "0.730 UF",
     description:
       "Respaldada por Inversiones La Construcción (ILC), cuenta con más de 40 años de trayectoria en el sistema de salud chileno y el programa Camina Contigo, que acompaña integralmente a afiliados con enfermedades graves.",
     logoPlaceholderStr: "/images/isapre-consalud.png",
@@ -38,7 +38,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 3,
     title: "ISAPRE COLMENA",
-    subtitle: "0.955UF",
+    subtitle: "0.955 UF",
     description:
       "Colmena, constituida en 1983, cuenta con amplia trayectoria en el sistema privado chileno y respaldo de grupos económicos nacionales e internacionales, con red preferente de clínicas de alta complejidad.",
     logoPlaceholderStr: "/images/isapre-colmena.png",
@@ -47,7 +47,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 4,
     title: "ISAPRE BANMEDICA",
-    subtitle: "0.780UF",
+    subtitle: "0.780 UF",
     description:
       "Banmédica, con más de 30 años de trayectoria en Chile, forma parte de Empresas Banmédica, grupo integrado con red propia de clínicas y presencia internacional en Latinoamérica.",
     logoPlaceholderStr: "/images/isapre-banmedica.png",
@@ -56,7 +56,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 5,
     title: "ISAPRE NUEVA MASVIDA",
-    subtitle: "0.690UF",
+    subtitle: "0.690 UF",
     description:
       "Nueva Masvida, creada en 2017 y perteneciente a Nexus Chile Health SpA, opera con cobertura nacional, amplia red de prestadores y compromiso de estabilidad en sus planes.",
     logoPlaceholderStr: "/images/isapre-nueva-masvida.png",
@@ -65,7 +65,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 6,
     title: "ISAPRE VIDA TRES",
-    subtitle: "0.770UF",
+    subtitle: "0.770 UF",
     description:
       "Vida Tres, fundada en 1986 y parte del Grupo Empresas Banmédica, nace desde clínicas de alto prestigio en Chile. Ofrece planes de alta cobertura y amplia red nacional de prestadores. Incluye servicios digitales y convenios con centros médicos de primer nivel.",
     logoPlaceholderStr: "/images/isapre-vida-tres.png",
@@ -74,7 +74,7 @@ const isapresDataList: IsapreData[] = [
   {
     id: 7,
     title: "ISAPRE ESENCIAL",
-    subtitle: "0.910UF",
+    subtitle: "0.910 UF",
     description:
       "Isapre Esencial, parte del Grupo Alemana (Corporación Chilena Alemana de Beneficencia), opera desde 2022 con enfoque digital, cobertura nacional y red de prestadores de primer nivel.",
     logoPlaceholderStr: "/images/isapre-esencial.png",
