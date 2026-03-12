@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://desdetu7.cl", // TODO SEO: URL canónica (ruta principal) para evitar indexar parámetros o duplicados
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function Home() {
