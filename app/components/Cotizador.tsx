@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { sendContactEmail } from "../lib/email"; // ✅ EmailJS helper actualizado
+import { CheckCircle } from "lucide-react";
+import { sendContactEmail } from "../lib/email";
 
 // --- Componentes Reutilizables de UI ---
 
@@ -31,7 +31,7 @@ const InputField: React.FC<InputFieldProps> = ({
       id={name}
       value={value}
       onChange={onChange}
-      placeholder={label} // Requerido para activar peer-placeholder-shown
+      placeholder={label}
       className="peer w-full px-3 pt-5 pb-2 bg-surface border border-gray-200 rounded-md text-text-main placeholder-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm"
       required={required}
     />
@@ -200,55 +200,64 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
 };
 
 // --- COMPONENTE PRINCIPAL COTIZADOR ---
+
+interface FormData {
+  nombreCompleto: string;
+  rut: string;
+  edad: number | string;
+  correo: string;
+  celular: string;
+  previsionActual: string;
+  ufActual: string;
+  regionResidencia: string;
+  cargas: string;
+  edadCargas: string;
+  rentaImponible: string;
+  comentarios: string;
+  tipo_contacto: string;
+  TO_EMAIL: string;
+  FROM_NAME: string;
+  FROM_EMAIL: string;
+  terminos: boolean;
+}
+
+const initialFormData: FormData = {
+  nombreCompleto: "",
+  rut: "",
+  edad: "",
+  correo: "",
+  celular: "",
+  previsionActual: "",
+  ufActual: "",
+  regionResidencia: "",
+  cargas: "",
+  edadCargas: "",
+  rentaImponible: "",
+  comentarios: "",
+  tipo_contacto: "",
+  TO_EMAIL: "contacto@desdetu7.cl",
+  FROM_NAME: "Landing Page Desde Tu 7%",
+  FROM_EMAIL: "contacto@desdetu7.cl",
+  terminos: false,
+};
+
 const Cotizador = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-
-  interface FormData {
-    nombreCompleto: string;
-    rut: string;
-    edad: number | string;
-    correo: string;
-    celular: string;
-    previsionActual: string;
-    ufActual: string;
-    regionResidencia: string;
-    cargas: string;
-    edadCargas: string;
-    rentaImponible: string;
-    comentarios: string;
-    tipo_contacto: string;
-    TO_EMAIL: string;
-    FROM_NAME: string;
-    FROM_EMAIL: string;
-  }
-
-  const initialFormData: FormData = {
-    nombreCompleto: "",
-    rut: "",
-    edad: "",
-    correo: "",
-    celular: "",
-    previsionActual: "",
-    ufActual: "",
-    regionResidencia: "",
-    cargas: "",
-    edadCargas: "", // Si luego agregas este input, ya está en el estado
-    rentaImponible: "",
-    comentarios: "",
-    tipo_contacto: "",
-    TO_EMAIL: "contacto@desdetu7.cl",
-    FROM_NAME: "Landing Page Desde Tu 7%",
-    FROM_EMAIL: "contacto@desdetu7.cl",
-  };
-
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [direction, setDirection] = useState<number>(0);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
+
+    if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
+      setFormData((prev) => ({ ...prev, [name]: e.target.checked }));
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -261,7 +270,6 @@ const Cotizador = () => {
     setCurrentStep((prev) => prev - 1);
   };
 
-  // ✅ Enviar correo usando el ESTADO directamente
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -269,7 +277,6 @@ const Cotizador = () => {
       setIsSending(true);
       console.log("Enviando datos a EmailJS: ", formData);
 
-      // Le pasamos el objeto JSON completo
       await sendContactEmail(formData);
 
       setIsSubmitted(true);
@@ -287,7 +294,6 @@ const Cotizador = () => {
     setIsSubmitted(false);
   };
 
-  // Configuración de animación (suavizada)
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 20 : -20,
@@ -300,11 +306,11 @@ const Cotizador = () => {
     }),
   };
 
-  const [direction, setDirection] = useState<number>(0);
   const handleNext = (e: React.FormEvent) => {
     setDirection(1);
     nextStep(e);
   };
+
   const handlePrev = () => {
     setDirection(-1);
     prevStep();
@@ -623,6 +629,25 @@ const Cotizador = () => {
                                 },
                               ]}
                             />
+                            <div className="flex items-center gap-2">
+                              <input
+                                type="checkbox"
+                                name="terminos"
+                                id="terminos"
+                                checked={formData.terminos}
+                                onChange={handleChange}
+                                required
+                                className="border-2 border-primary cursor-pointer"
+                              />
+                              <label
+                                htmlFor="terminos"
+                                className="text-primary text-start"
+                              >
+                                Autorizo el tratamiento de mis datos personales
+                                conforme a la legislación vigente y la política
+                                de privacidad.
+                              </label>
+                            </div>
                           </div>
                           <div className="mt-8 flex gap-3">
                             <SecondaryButton
@@ -642,7 +667,6 @@ const Cotizador = () => {
                 </form>
               </>
             ) : (
-              // VISTA DE ÉXITO
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
