@@ -71,9 +71,9 @@ const SelectField: React.FC<SelectFieldProps> = ({
       required={required}
       style={{
         backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-        backgroundPosition: `right 1rem center`,
-        backgroundRepeat: `no-repeat`,
-        backgroundSize: `1.5em 1.5em`,
+        backgroundPosition: "right 1rem center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "1.5em 1.5em",
       }}
     >
       <option value="" disabled hidden></option>
@@ -167,6 +167,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
         {steps.map((step) => {
           const isActive = currentStep >= step.id;
           const isCurrent = currentStep === step.id;
+
           return (
             <div
               key={step.id}
@@ -251,10 +252,12 @@ const Cotizador = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
-    const { name, value } = e.target;
+    const target = e.target;
+    const { name, value } = target;
 
-    if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
-      setFormData((prev) => ({ ...prev, [name]: e.target.checked }));
+    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+      const checked = target.checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
       return;
     }
 
