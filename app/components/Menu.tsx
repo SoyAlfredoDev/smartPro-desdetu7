@@ -16,7 +16,7 @@ export default function Menu() {
   // Centralizamos los enlaces para facilitar su renderizado
   const navLinks = [
     { href: "/", label: "INICIO" },
-    { href: "#cotizador", label: "COTIZADOR" },
+    { href: "#cotizador-online", label: "COTIZADOR" },
     { href: "#isapres", label: "ISAPRES" },
     { href: "#agenda", label: "AGENDA ONLINE" },
     { href: "#noticias", label: "NOTICIAS" },

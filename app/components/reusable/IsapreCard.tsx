@@ -47,7 +47,7 @@ const IsapreCard: React.FC<IsapreCardProps> = ({ data }) => {
 
       {/* Icono Más (+) inferior */}
       <Link
-        href="#cotizador"
+        href="#cotizador-online"
         className="mt-8 text-teal-400 text-4xl leading-none font-light select-none"
       >
         {" "}
