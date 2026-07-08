@@ -233,7 +233,10 @@ const Footer = () => {
             <a href="#" className="hover:text-primary transition-colors">
               Términos y Condiciones
             </a>
-            <a href="#" className="hover:text-primary transition-colors">
+            <a
+              href="/politica-privacidad"
+              className="hover:text-primary transition-colors"
+            >
               Políticas de Privacidad
             </a>
           </div>
