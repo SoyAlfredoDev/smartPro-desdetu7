@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { privacyPolicyMeta } from "@/constants/privacy-policy";
 import {
   Mail,
   Phone,
@@ -132,6 +134,14 @@ const Footer = () => {
                   Noticias
                 </a>
               </li>
+              <li>
+                <Link
+                  href={privacyPolicyMeta.path}
+                  className="text-text-muted hover:text-primary transition-colors duration-200 block"
+                >
+                  Política de Privacidad
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -233,12 +243,12 @@ const Footer = () => {
             <a href="#" className="hover:text-primary transition-colors">
               Términos y Condiciones
             </a>
-            <a
-              href="/politica-privacidad"
+            <Link
+              href={privacyPolicyMeta.path}
               className="hover:text-primary transition-colors"
             >
-              Políticas de Privacidad
-            </a>
+              Política de Privacidad
+            </Link>
           </div>
         </div>
       </div>
