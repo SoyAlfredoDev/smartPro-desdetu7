@@ -647,8 +647,16 @@ const Cotizador = () => {
                                 className="text-primary text-start"
                               >
                                 Autorizo el tratamiento de mis datos personales
-                                conforme a la legislación vigente y la política
-                                de privacidad.
+                                conforme a la legislación vigente y la{" "}
+                                <a
+                                  href="/politica-privacidad"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="font-semibold underline underline-offset-2 hover:opacity-80"
+                                >
+                                  política de privacidad
+                                </a>
+                                .
                               </label>
                             </div>
                           </div>
