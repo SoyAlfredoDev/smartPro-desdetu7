@@ -278,7 +278,24 @@ const Cotizador = () => {
 
     try {
       setIsSending(true);
-      console.log("Enviando datos a EmailJS: ", formData);
+
+      // CRM del cotizador (best-effort): no bloquea el envío por EmailJS.
+      try {
+        const crmResponse = await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        if (!crmResponse.ok) {
+          console.error(
+            "Registro CRM falló",
+            crmResponse.status,
+            await crmResponse.text().catch(() => ""),
+          );
+        }
+      } catch (crmError) {
+        console.error("Registro CRM no disponible:", crmError);
+      }
 
       await sendContactEmail(formData);
 
