@@ -279,18 +279,29 @@ const Cotizador = () => {
     try {
       setIsSending(true);
 
-      // CRM del cotizador (best-effort): no bloquea el envío por EmailJS.
+      // 1) CRM cotizador vía API pública (server /api/leads → isaprespremium.cl)
+      // 2) EmailJS de la página (se mantiene aunque el CRM falle)
+      let crmRegistered = false;
       try {
         const crmResponse = await fetch("/api/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         });
-        if (!crmResponse.ok) {
+        const crmPayload = (await crmResponse.json().catch(() => null)) as {
+          ok?: boolean;
+          registered?: boolean;
+          code?: string;
+          error?: string;
+        } | null;
+
+        if (crmResponse.ok && crmPayload?.registered) {
+          crmRegistered = true;
+        } else {
           console.error(
             "Registro CRM falló",
             crmResponse.status,
-            await crmResponse.text().catch(() => ""),
+            crmPayload?.code ?? crmPayload?.error ?? "",
           );
         }
       } catch (crmError) {
@@ -298,6 +309,12 @@ const Cotizador = () => {
       }
 
       await sendContactEmail(formData);
+
+      if (!crmRegistered) {
+        console.warn(
+          "Lead enviado por correo, pero no quedó registrado en el cotizador. Revisa COTIZADOR_PUBLIC_API_SECRET en Vercel.",
+        );
+      }
 
       setIsSubmitted(true);
     } catch (error) {
