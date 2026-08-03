@@ -217,6 +217,7 @@ interface FormData {
   comentarios: string;
   tipo_contacto: string;
   TO_EMAIL: string;
+  CC_EMAIL: string;
   FROM_NAME: string;
   FROM_EMAIL: string;
   terminos: boolean;
@@ -237,6 +238,7 @@ const initialFormData: FormData = {
   comentarios: "",
   tipo_contacto: "",
   TO_EMAIL: "contacto@desdetu7.cl",
+  CC_EMAIL: "premiumisapres@gmail.com",
   FROM_NAME: "Landing Page Desde Tu 7%",
   FROM_EMAIL: "contacto@desdetu7.cl",
   terminos: false,

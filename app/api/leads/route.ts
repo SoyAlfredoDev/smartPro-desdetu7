@@ -189,6 +189,7 @@ export async function POST(request: Request) {
       }),
       executiveKind: "ISAPRES_PREMIUM" as const,
       autoAssign: false,
+      notifyAdmin: true,
     };
 
     const endpoint = getClientsEndpoint();
